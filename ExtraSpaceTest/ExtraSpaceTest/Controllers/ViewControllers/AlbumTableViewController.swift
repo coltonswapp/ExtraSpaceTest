@@ -24,14 +24,14 @@ class AlbumTableViewController: UITableViewController {
     func configure() {
         
         refresh.attributedTitle = NSAttributedString(string: "Pull down to see to refresh albums!")
-        refresh.addTarget(self, action: #selector(getAlbums(_:)), for: .valueChanged)
+        refresh.addTarget(self, action: #selector(refreshPull), for: .valueChanged)
         tableView.addSubview(refresh)
         
         getAlbums(0)
     }
     
     // Get albums is called when the view loads, as well as when we get to the bottom of the tableview to fetch the next 10 albums.
-    @objc func getAlbums(_ start: Int) {
+    func getAlbums(_ start: Int) {
         
         AlbumController.shared.fetchAlbums(start: start, limit: 10) { result in
             
@@ -42,7 +42,7 @@ class AlbumTableViewController: UITableViewController {
                 
                 // If we suceed, do this:
                 case .success(_):
-                    self.refresh.endRefreshing()
+                    
                     print("Houston we have toched down with the API")
                     // Adjust the currentAlbumSpot to reflect where we are in the data.
                     self.currentAlbumSpot = start
@@ -55,6 +55,11 @@ class AlbumTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    @objc func refreshPull() {
+        print("Nothing to refresh :)")
+        self.refresh.endRefreshing()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
