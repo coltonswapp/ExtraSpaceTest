@@ -12,13 +12,19 @@ Thank you so much for checking out the project that I made for this coding exerc
 
 <img src = "ExtraSpaceImages/MainView.png" width = "300">
 
+__________________
+
 - Clicking on an album will navigate to a detail view.
 
 ![](ExtraSpaceImages/DetailView.gif)
 
+__________________
+
 - Pulling from the top of the tableview downward exposes a pull-to-refresh.
 
 ![](ExtraSpaceImages/RefreshView.gif)
+
+__________________
 
 - Scrolling to the bottom of the table will fetch another 10 albums.
 
